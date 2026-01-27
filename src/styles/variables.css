@@ -1,0 +1,14 @@
+:root {
+  /* colors */
+  --color-mainBackground: #ffffff;
+  --color-accent: #101828;
+  --color-activeLink: #d84343;
+  --color-secondaryBackground: #f7f7f7;
+  --color-textHero: #f7f7f7;
+  --color-backgroundButton: #e44848;
+  --color-buttonText: #fff;
+  --color-hoverButton: #d84343;
+
+  /* animation */
+  --animation: 2s ease-in-out;
+}

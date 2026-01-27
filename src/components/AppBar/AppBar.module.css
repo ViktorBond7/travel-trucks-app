@@ -1,0 +1,23 @@
+.appBar {
+  background-color: var(--color-secondaryBackground);
+}
+.appBarContainer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 28px 0;
+}
+.navigation {
+  grid-column: 2;
+  display: flex;
+  gap: 32px;
+}
+/* .spacer {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .spacer {
+    display: block;
+  }
+} */

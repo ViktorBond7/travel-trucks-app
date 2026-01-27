@@ -1,0 +1,28 @@
+.homePage {
+  background-image: url("/img/picture-home-page.jpg");
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+
+  align-items: center;
+}
+
+.homePage h1,
+.homePage p {
+  color: var(--color-textHero);
+  font-weight: 600;
+}
+.homePage h1 {
+  font-size: 48px;
+  line-height: 0.67;
+  margin-bottom: 16px;
+}
+
+.homePage p {
+  font-size: 24px;
+  line-height: 1.33;
+  margin-bottom: 40px;
+}
