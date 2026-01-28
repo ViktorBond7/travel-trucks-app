@@ -1,7 +1,8 @@
+import clsx from "clsx";
 import css from "./Container.module.css";
 
-const Container = ({ children }) => {
-  return <div className={css.container}>{children}</div>;
+const Container = ({ children, align = "center" }) => {
+  return <div className={clsx(css.container, css[align])}>{children}</div>;
 };
 
 export default Container;

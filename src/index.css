@@ -67,6 +67,8 @@ button,
 input {
   cursor: pointer;
   font-family: inherit;
+  outline: none;
+  border: none;
 }
 
 button {

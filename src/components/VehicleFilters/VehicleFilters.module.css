@@ -1,0 +1,85 @@
+.filterBtn input {
+  display: none;
+}
+
+.filterBtn {
+  display: flex;
+
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  border-radius: 12px;
+  width: 112px;
+  height: 96px;
+  align-items: center;
+  /* align-content: center; */
+  justify-content: center;
+  /* justify-items: center; */
+}
+
+.filterBtn:has(input:checked) {
+  border-color: var(--color-backgroundButton);
+}
+.inputWrapper {
+  position: relative;
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+}
+
+.labelInput {
+  color: #6c717b;
+}
+
+.field {
+  border-radius: 12px;
+  padding-left: 48px;
+  width: 100%;
+  height: 56px;
+  background: #f7f7f7;
+}
+
+.field::placeholder {
+  transition: color var(--animation);
+}
+
+.field:focus::placeholder,
+.field:hover::placeholder {
+  color: var(--color-accent);
+}
+
+.title {
+  margin-bottom: 32px;
+  line-height: 1.5;
+  color: #475467;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 12px;
+  row-gap: 8px;
+  position: relative;
+  margin-top: 48px;
+  margin-bottom: 32px;
+}
+
+.grid::before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.btn {
+  margin-top: 8px;
+}
