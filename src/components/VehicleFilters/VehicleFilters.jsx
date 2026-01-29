@@ -15,17 +15,23 @@ const initialState = {
   },
 };
 
-const VehicleTypeRadio = ({ name, value, label }) => (
+const VehicleTypeRadio = ({ name, value, label, iconId }) => (
   <label className={css.filterBtn}>
     <Field type="radio" name={name} value={value} />
-    <span>{label}</span>
+    <span>
+      <SvgIcon id={iconId} height="32" width="32" />
+      {label}
+    </span>
   </label>
 );
 
-const EquipmentCheckbox = ({ name, label }) => (
+const EquipmentCheckbox = ({ name, label, iconId }) => (
   <label className={css.filterBtn}>
     <Field type="checkbox" name={name} />
-    <span>{label}</span>
+    <span>
+      <SvgIcon id={iconId} height="32" width="32" />
+      {label}
+    </span>
   </label>
 );
 
@@ -54,22 +60,45 @@ const VehicleFilters = () => {
         <p className={css.title}>Filters</p>
         <h3>Vehicle equipment</h3>
         <div className={css.grid}>
-          <EquipmentCheckbox name="equipment.ac" label="AC" />
-          <EquipmentCheckbox name="equipment.automatic" label="Automatic" />
-          <EquipmentCheckbox name="equipment.kitchen" label="Kitchen" />
-          <EquipmentCheckbox name="equipment.tv" label="TV" />
-          <EquipmentCheckbox name="equipment.bathroom" label="Bathroom" />
+          <EquipmentCheckbox name="equipment.ac" label="AC" iconId="icon-ac" />
+          <EquipmentCheckbox
+            name="equipment.automatic"
+            label="Automatic"
+            iconId="icon-automatic"
+          />
+          <EquipmentCheckbox
+            name="equipment.kitchen"
+            label="Kitchen"
+            iconId="icon-kitchen"
+          />
+          <EquipmentCheckbox name="equipment.tv" label="TV" iconId="icon-tv" />
+          <EquipmentCheckbox
+            name="equipment.bathroom"
+            label="Bathroom"
+            iconId="icon-shower"
+          />
         </div>
 
         <h3>Vehicle type</h3>
         <div className={css.grid}>
-          <VehicleTypeRadio name="vehicleType" value="van" label="Van" />
+          <VehicleTypeRadio
+            name="vehicleType"
+            value="van"
+            label="Van"
+            iconId="icon-van"
+          />
           <VehicleTypeRadio
             name="vehicleType"
             value="fullyIntegrated"
             label="Fully Integrated"
+            iconId="icon-fully-integrated"
           />
-          <VehicleTypeRadio name="vehicleType" value="alcove" label="Alcove" />
+          <VehicleTypeRadio
+            name="vehicleType"
+            value="alcove"
+            label="Alcove"
+            iconId="icon-alcove"
+          />
         </div>
         <Button type="submit" className={css.btn}>
           Search
