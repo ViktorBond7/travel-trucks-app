@@ -1,0 +1,18 @@
+.meta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.iconRat {
+  fill: #ffc531;
+}
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

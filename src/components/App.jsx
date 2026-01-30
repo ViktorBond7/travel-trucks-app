@@ -14,8 +14,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CampersPage />} />
         <Route path="/catalog/:id" element={<CamperDetailsPage />}>
-          <Route path="/catalog/:id/features" element={<Features />} />
-          <Route path="/catalog/:id/reviews" element={<Reviews />} />
+          <Route index element={<></>} />
+          <Route path="features" element={<Features />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
       </Routes>
     </>

@@ -8,7 +8,19 @@ export const fetchCampers = createAsyncThunk(
   async (params = {}, thunkAPI) => {
     try {
       const response = await axios.get("/campers", { params });
-      console.log(response);
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
+export const fetchCamperById = createAsyncThunk(
+  "campers/fetchCamperById",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(`/campers/${id}`);
 
       return response.data;
     } catch (error) {

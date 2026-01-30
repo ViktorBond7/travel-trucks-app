@@ -1,7 +1,29 @@
+import { Outlet, useParams } from "react-router-dom";
 import Container from "../../components/Container/Container";
+import { useEffect } from "react";
+import { fetchCamperById } from "../../redux/campers/operations";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCamper } from "../../redux/campers/campersSlice";
+// import { formatPrice } from "../../helpers/formatPrice";
+import DetailsCamper from "../../components/DetailsCamper/DetailsCamper";
 
 const CamperDetailsPage = () => {
-  return <Container>Camper Details Page</Container>;
+  const idCamper = useParams().id;
+
+  const camper = useSelector(selectCamper);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCamperById(idCamper));
+  }, [idCamper]);
+
+  return (
+    <Container>
+      {camper && <DetailsCamper camper={camper} />}
+      <Outlet context={camper} />
+    </Container>
+  );
 };
 
 export default CamperDetailsPage;
