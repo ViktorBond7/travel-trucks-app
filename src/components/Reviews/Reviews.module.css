@@ -1,0 +1,66 @@
+.containerReviews {
+  display: grid;
+  grid-template-columns: 632px 1fr;
+  gap: 40px;
+}
+
+.description {
+  border-radius: 10px;
+  padding: 0;
+  position: relative;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.item p {
+  color: var(--color-textSecondary);
+}
+
+.containerTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.box {
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-bachgroundItem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 24px;
+
+  line-height: 1.33333;
+  color: var(--color-backgroundButton);
+}
+
+.boxRight {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.boxRight p {
+  font-weight: 500;
+}
+
+.iconRating {
+  fill: #f2f4f7;
+}
+
+.iconHasRating {
+  fill: #ffc531;
+}

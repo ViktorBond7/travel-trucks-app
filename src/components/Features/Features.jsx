@@ -1,59 +1,18 @@
 import { useOutletContext } from "react-router-dom";
 import css from "./Features.module.css";
-import SvgIcon from "../SvgIcon/SvgIcon";
-
-const featuresConfig = [
-  {
-    key: "transmission",
-    label: (value) => (value === "automatic" ? "Automatic" : "Manual"),
-    alwaysShow: true,
-    idIcon: "icon-automatic",
-  },
-  {
-    key: "engine",
-    label: (value) => value,
-    alwaysShow: true,
-    idIcon: "icon-petrol",
-  },
-  { key: "AC", label: () => "AC", idIcon: "icon-ac" },
-  { key: "bathroom", label: () => "Bathroom", idIcon: "icon-shower" },
-  { key: "kitchen", label: () => "Kitchen", idIcon: "icon-kitchen" },
-  { key: "TV", label: () => "TV", idIcon: "icon-tv" },
-  { key: "radio", label: () => "Radio", idIcon: "icon-radios" },
-  { key: "refrigerator", label: () => "Refrigerator", idIcon: "icon-fridge" },
-  { key: "microwave", label: () => "Microwave", idIcon: "icon-microwave" },
-  { key: "gas", label: () => "Gas", idIcon: "icon-gas" },
-  { key: "water", label: () => "Water", idIcon: "icon-water" },
-];
+import FeaturesList from "../FeaturesList/FeaturesList";
+import BookCamper from "../BookCamper/BookCamper";
 
 const Features = () => {
   const camper = useOutletContext();
-  console.log("camper", camper);
 
   return (
     <>
       {camper && (
         <div className={css.containerFeatures}>
           <div className={css.description}>
-            <ul className={css.featuresList}>
-              {featuresConfig.map(({ key, label, idIcon, alwaysShow }) => {
-                const value = camper?.[key];
+            <FeaturesList camper={camper} />
 
-                if (!alwaysShow && !value) return null;
-
-                return (
-                  <li key={key} className={css.featureItem}>
-                    <SvgIcon
-                      id={idIcon}
-                      width="20"
-                      height="20"
-                      className={css.icon}
-                    />
-                    {label(value)}
-                  </li>
-                );
-              })}
-            </ul>
             <p className={css.title}>Vehicle details</p>
             <ul className={css.list}>
               <li className={css.item}>
@@ -76,7 +35,9 @@ const Features = () => {
               </li>
             </ul>
           </div>
-          <div></div>
+          <div>
+            <BookCamper />
+          </div>
         </div>
       )}
     </>

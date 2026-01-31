@@ -1,0 +1,16 @@
+/* Контейнер для інпуту */
+.dateInput {
+  width: 100%;
+  height: 60px;
+  padding: 18px;
+  background-color: var(--color-secondaryBackground);
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* Важливо: react-datepicker створює обгортку, 
+яку теж треба зробити на всю ширину */
+/* :global(.react-datepicker-wrapper) {
+  width: 100%;
+} */

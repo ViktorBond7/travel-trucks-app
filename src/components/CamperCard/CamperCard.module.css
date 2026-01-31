@@ -75,3 +75,6 @@
   background-color: var(--color-bachgroundItem);
   font-weight: 500;
 }
+.marginBottom {
+  margin-bottom: 24px;
+}

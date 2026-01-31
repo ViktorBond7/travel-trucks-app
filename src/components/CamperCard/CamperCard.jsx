@@ -1,7 +1,10 @@
+import clsx from "clsx";
 import Button from "../Button/Button";
+import FeaturesList from "../FeaturesList/FeaturesList";
 import MetaCamper from "../MetaCamper/MetaCamper";
 import SvgIcon from "../SvgIcon/SvgIcon";
 import css from "./CamperCard.module.css";
+import { formatPrice } from "../../helpers/formatPrice";
 
 const CamperCard = ({
   gallery,
@@ -12,6 +15,7 @@ const CamperCard = ({
   description,
   reviews,
   id,
+  ...rest
 }) => {
   return (
     <li className={css.camperCard}>
@@ -23,7 +27,7 @@ const CamperCard = ({
         <div className={css.header}>
           <h2 className={css.name}>{name}</h2>
           <div className={css.priceWrapper}>
-            <span className={css.price}>${price}</span>
+            <span className={css.price}>${formatPrice(price)}</span>
             <button className={css.bookButton}>
               <SvgIcon
                 id="icon-favorite"
@@ -36,23 +40,8 @@ const CamperCard = ({
         </div>
         <MetaCamper camper={{ rating, reviews, location }} />
         <p className={css.description}>{description}</p>
-        <ul className={css.categories}>
-          <li className={css.categoriesItem}>
-            <SvgIcon id="icon-automatic" width="20" height="20" /> Automatic
-          </li>
-          <li className={css.categoriesItem}>
-            <SvgIcon id="icon-petrol" width="20" height="20" />
-            Petrol
-          </li>
-          <li className={css.categoriesItem}>
-            <SvgIcon id="icon-kitchen" width="20" height="20" />
-            Kitchen
-          </li>
-          <li className={css.categoriesItem}>
-            <SvgIcon id="icon-ac" width="20" height="20" />
-            AC
-          </li>
-        </ul>
+        <FeaturesList camper={rest} className={css.marginBottom} shortList />
+
         <Button
           className={css.btn}
           to={`/catalog/${id}`}

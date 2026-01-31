@@ -54,7 +54,7 @@
   font-size: 20px;
 
   line-height: 1.2;
-  margin-bottom: 80px;
+  margin-bottom: 68px;
   position: relative;
 }
 .buttonWrapper::after {
@@ -65,6 +65,7 @@
   background-color: #dadde1;
   top: 610px;
 }
+
 .active {
 }
 .active::after {

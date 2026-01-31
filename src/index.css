@@ -74,13 +74,16 @@ input {
 
 button {
   border: none;
-  /* font-size: inherit; */
 }
+
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
-/* svg {
-  display: block;
-} */
+
+input,
+textarea {
+  outline: none;
+  border: none;
+}
