@@ -1,0 +1,10 @@
+.box {
+  margin-top: 50px;
+  max-width: 1006px;
+  margin-bottom: 30px;
+  /* margin: 0 auto; */
+}
+
+.emptyMessage p {
+  margin-bottom: 30px;
+}

@@ -78,3 +78,7 @@
 .marginBottom {
   margin-bottom: 24px;
 }
+
+.iconFav {
+  fill: var(--color-backgroundButton);
+}

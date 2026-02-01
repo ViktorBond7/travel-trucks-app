@@ -30,3 +30,7 @@
 .btn {
   padding: 16px 48px;
 }
+.containerLeft {
+  margin-left: 0;
+  margin-right: auto;
+}
