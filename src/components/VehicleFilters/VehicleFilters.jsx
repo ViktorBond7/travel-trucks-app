@@ -2,18 +2,15 @@ import { Field, Form, Formik } from "formik";
 import css from "./VehicleFilters.module.css";
 import Button from "../Button/Button";
 import SvgIcon from "../SvgIcon/SvgIcon";
-
-const initialState = {
-  location: "",
-  vehicleType: "",
-  equipment: {
-    ac: false,
-    kitchen: false,
-    automatic: false,
-    tv: false,
-    bathroom: false,
-  },
-};
+import { useDispatch, useSelector } from "react-redux";
+import {
+  resetFilters,
+  selectFilters,
+  setAllFilters,
+} from "../../redux/filters/filtersSlice";
+import { fetchCampers } from "../../redux/campers/operations";
+import { prepareForNewSearch } from "../../redux/campers/campersSlice";
+import { transformFiltersToParams } from "../../helpers/transformFiltersToParams.js";
 
 const VehicleTypeRadio = ({ name, value, label, iconId }) => (
   <label className={css.filterBtn}>
@@ -36,13 +33,26 @@ const EquipmentCheckbox = ({ name, label, iconId }) => (
 );
 
 const VehicleFilters = () => {
+  const filterFromStore = useSelector(selectFilters);
+  const dispatch = useDispatch();
+
+  const valueFromStorage = Object.values(
+    transformFiltersToParams(filterFromStore),
+  ).slice(0, -1);
+
+  const handleSubmit = (values) => {
+    const cleanParams = transformFiltersToParams(values);
+
+    dispatch(setAllFilters(values)); // Зберігаємо оригінальні значення для форми
+    dispatch(prepareForNewSearch()); // Очищуємо стейт перед новим пошуком
+    dispatch(fetchCampers({ page: 1, params: cleanParams })); // Відправляємо запит
+  };
+
   return (
     <Formik
-      initialValues={initialState}
+      initialValues={filterFromStore}
       enableReinitialize
-      onSubmit={(values) => {
-        console.log("Vehicle Filters Submitted", values);
-      }}
+      onSubmit={handleSubmit}
     >
       <Form>
         <label className={css.labelInput} htmlFor="location">
@@ -60,20 +70,20 @@ const VehicleFilters = () => {
         <p className={css.title}>Filters</p>
         <h3>Vehicle equipment</h3>
         <div className={css.grid}>
-          <EquipmentCheckbox name="equipment.ac" label="AC" iconId="icon-ac" />
+          <EquipmentCheckbox name="ac" label="AC" iconId="icon-ac" />
           <EquipmentCheckbox
-            name="equipment.automatic"
+            name="transmission"
             label="Automatic"
             iconId="icon-automatic"
           />
           <EquipmentCheckbox
-            name="equipment.kitchen"
+            name="kitchen"
             label="Kitchen"
             iconId="icon-kitchen"
           />
-          <EquipmentCheckbox name="equipment.tv" label="TV" iconId="icon-tv" />
+          <EquipmentCheckbox name="tv" label="TV" iconId="icon-tv" />
           <EquipmentCheckbox
-            name="equipment.bathroom"
+            name="bathroom"
             label="Bathroom"
             iconId="icon-shower"
           />
@@ -82,27 +92,45 @@ const VehicleFilters = () => {
         <h3>Vehicle type</h3>
         <div className={css.grid}>
           <VehicleTypeRadio
-            name="vehicleType"
+            name="form"
             value="van"
             label="Van"
             iconId="icon-van"
           />
           <VehicleTypeRadio
-            name="vehicleType"
+            name="form"
             value="fullyIntegrated"
             label="Fully Integrated"
             iconId="icon-fully-integrated"
           />
           <VehicleTypeRadio
-            name="vehicleType"
+            name="form"
             value="alcove"
             label="Alcove"
             iconId="icon-alcove"
           />
         </div>
-        <Button type="submit" className={css.btn}>
-          Search
-        </Button>
+
+        <div className={css.btnWrapper}>
+          <Button type="submit">Search</Button>
+
+          {valueFromStorage.length > 0 && (
+            <Button
+              onClick={() => {
+                // 2. Скидаємо фільтри в Redux (це оновить і LocalStorage)
+                dispatch(resetFilters());
+
+                // 3. Очищуємо список кемперів і сторінку
+                dispatch(prepareForNewSearch());
+
+                // 4. Завантажуємо початковий список без фільтрів
+                // dispatch(fetchCampers({ page: 1, params: {} }));
+              }}
+            >
+              Reset
+            </Button>
+          )}
+        </div>
       </Form>
     </Formik>
   );

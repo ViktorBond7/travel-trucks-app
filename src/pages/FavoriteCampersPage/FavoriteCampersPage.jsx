@@ -1,14 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-
 import CamperList from "../../components/CamperList/CamperList";
-import { Link, Navigate } from "react-router-dom";
 import css from "./FavoriteCampersPage.module.css";
 import Container from "../../components/Container/Container";
 import Button from "../../components/Button/Button";
 import { useEffect } from "react";
 import { fetchCamperByIdIds } from "../../redux/favorite/operations";
 import {
-  selectCampersFav,
   selectCampersFavIds,
   selectFavoriteCampers,
 } from "../../redux/favorite/favoriteSlice";

@@ -8,9 +8,3 @@
   border: none;
   outline: none;
 }
-
-/* Важливо: react-datepicker створює обгортку, 
-яку теж треба зробити на всю ширину */
-/* :global(.react-datepicker-wrapper) {
-  width: 100%;
-} */

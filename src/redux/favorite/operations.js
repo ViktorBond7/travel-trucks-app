@@ -8,10 +8,6 @@ export const fetchCamperByIdIds = createAsyncThunk(
       const res = await Promise.all(
         ids.map((id) => axios.get(`/campers/${id}`)),
       );
-      console.log(
-        "res.map((r) => r.data)",
-        res.map((r) => r.data),
-      );
 
       return res.map((r) => r.data);
     } catch (error) {

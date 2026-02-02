@@ -1,7 +1,6 @@
-import { use, useEffect } from "react";
+import { useEffect } from "react";
 import CamperList from "../../components/CamperList/CamperList";
 import Container from "../../components/Container/Container";
-import LocationInput from "../../components/LocationInput/LocationInput";
 import VehicleFilters from "../../components/VehicleFilters/VehicleFilters";
 import css from "./CampersPage.module.css";
 import { fetchCampers } from "../../redux/campers/operations";
@@ -15,6 +14,8 @@ import {
   selectTotal,
 } from "../../redux/campers/campersSlice";
 import Loader from "../../components/Loader/Loader";
+import { transformFiltersToParams } from "../../helpers/transformFiltersToParams";
+import { selectFilters } from "../../redux/filters/filtersSlice";
 
 const CampersPage = () => {
   const campers = useSelector(selectCampers);
@@ -22,12 +23,17 @@ const CampersPage = () => {
   const page = useSelector(selectPage);
   const totalCampers = useSelector(selectTotal);
   const isError = useSelector(selectIsError);
+  const filters = useSelector(selectFilters);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCampers({ page }));
-  }, [dispatch, page]);
+    // Кожного разу, коли змінюється сторінка АБО будь-який фільтр:
+    const cleanParams = transformFiltersToParams(filters);
+
+    // Ми викликаємо запит, де ПАРАМЕТРИ фільтрації та СТОРІНКА йдуть разом
+    dispatch(fetchCampers({ page, params: cleanParams }));
+  }, [dispatch, page, filters]); // Стежимо за обома змінами
 
   const handleLoadMore = () => {
     dispatch(incrementPage());

@@ -5,6 +5,14 @@
   /* margin: 0 auto; */
 }
 
-.emptyMessage p {
+.emptyMessage {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 500px;
   margin-bottom: 30px;
 }

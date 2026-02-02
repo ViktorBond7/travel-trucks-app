@@ -1,6 +1,6 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { formatPrice } from "../../helpers/formatPrice";
-import Container from "../Container/Container";
+
 import MetaCamper from "../MetaCamper/MetaCamper";
 import css from "./DetailsCamper.module.css";
 import clsx from "clsx";

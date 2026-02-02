@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { fetchCamperById } from "../../redux/campers/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCamper } from "../../redux/campers/campersSlice";
-// import { formatPrice } from "../../helpers/formatPrice";
 import DetailsCamper from "../../components/DetailsCamper/DetailsCamper";
 import css from "./CamperDetailsPage.module.css";
 

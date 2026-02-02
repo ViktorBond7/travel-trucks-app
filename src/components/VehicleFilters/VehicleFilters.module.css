@@ -91,3 +91,7 @@
 .btn {
   margin-top: 8px;
 }
+.btnWrapper {
+  display: flex;
+  gap: 8px;
+}

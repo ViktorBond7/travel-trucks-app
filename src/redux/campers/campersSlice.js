@@ -1,4 +1,4 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { fetchCamperById, fetchCampers } from "./operations.js";
 
 const campersSlice = createSlice({
@@ -14,6 +14,11 @@ const campersSlice = createSlice({
   reducers: {
     incrementPage(state) {
       state.page += 1;
+    },
+    prepareForNewSearch(state) {
+      state.items = []; // Очищуємо список, щоб старі машини зникли
+      state.page = 1; // Скидаємо сторінку на першу для нового запиту
+      state.total = 0; // Обнуляємо лічильник загальної кількості
     },
   },
   extraReducers: (builder) => {
@@ -44,7 +49,8 @@ const campersSlice = createSlice({
   },
 });
 export default campersSlice.reducer;
-export const { toggleFavorite, incrementPage } = campersSlice.actions;
+export const { toggleFavorite, incrementPage, prepareForNewSearch } =
+  campersSlice.actions;
 
 // =========selectors=========//
 
@@ -55,5 +61,3 @@ export const selectIsError = (state) => state.campers.error;
 export const selectCamper = (state) => state.campers.camper;
 export const selectPage = (state) => state.campers.page;
 export const selectTotal = (state) => state.campers.total;
-
-

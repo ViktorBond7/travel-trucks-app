@@ -12,12 +12,3 @@
   display: flex;
   gap: 32px;
 }
-/* .spacer {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .spacer {
-    display: block;
-  }
-} */

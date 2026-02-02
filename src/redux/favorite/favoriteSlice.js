@@ -31,7 +31,6 @@ const favoritesSlice = createSlice({
       })
       .addCase(fetchCamperByIdIds.fulfilled, (state, action) => {
         state.isLoading = false;
-        console.log(action);
 
         state.favoriteItems = action.payload;
       })

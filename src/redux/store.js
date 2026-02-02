@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import campersReducer from "./campers/campersSlice.js";
 import camperFavReducer from "./favorite/favoriteSlice";
+import filtersSliceReducer from "./filters/filtersSlice.js";
 
 import {
   persistStore,
@@ -14,18 +15,31 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-const persistConfig = {
+const favoritesPersistConfig = {
   key: "favorites",
   storage,
-  whitelist: ["favoritesIds"],
+  whitelist: ["favoritesIds", "filters"],
 };
 
-const persistedReducer = persistReducer(persistConfig, camperFavReducer);
+const filtersPersistConfig = {
+  key: "filters",
+  storage,
+  whitelist: [
+    "location",
+    "form",
+    "ac",
+    "bathroom",
+    "kitchen",
+    "tv",
+    "transmission",
+  ],
+};
 
 export const store = configureStore({
   reducer: {
     campers: campersReducer,
-    camperFav: persistedReducer,
+    camperFav: persistReducer(favoritesPersistConfig, camperFavReducer),
+    filters: persistReducer(filtersPersistConfig, filtersSliceReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -14,7 +14,6 @@ export const fetchCampers = createAsyncThunk(
           ...params,
         },
       });
-      console.log(response.data);
 
       return response.data;
     } catch (error) {
