@@ -2,13 +2,14 @@ import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import css from "./Navigation.module.css";
 import { useSelector } from "react-redux";
-import { selectFavoriteIds } from "../../redux/campers/campersSlice";
+
+import { selectCampersFavIds } from "../../redux/favorite/favoriteSlice";
 
 const Navigation = () => {
   const buildLinkClass = ({ isActive }) =>
     clsx(css.link, isActive && css.active);
 
-  const favoriteIds = useSelector(selectFavoriteIds);
+  const favoriteIds = useSelector(selectCampersFavIds);
 
   return (
     <>

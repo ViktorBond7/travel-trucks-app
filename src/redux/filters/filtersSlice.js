@@ -2,14 +2,17 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { fetchCamperById, fetchCampers } from "./operations.js";
 
 const campersSlice = createSlice({
-  name: "campers",
+  name: "campers/filter",
   initialState: {
-    items: [],
-    camper: null,
-    isLoading: false,
-    error: null,
-    page: 1,
-    total: 0,
+    location: "",
+    equipment: {
+      AC: false,
+      kitchen: false,
+      TV: false,
+      bathroom: false,
+    },
+    vehicleType: "", // 'van', 'fullyIntegrated' або 'alcove'
+    transmission: "", // "manual", "automatic"
   },
   reducers: {
     incrementPage(state) {
@@ -55,5 +58,3 @@ export const selectIsError = (state) => state.campers.error;
 export const selectCamper = (state) => state.campers.camper;
 export const selectPage = (state) => state.campers.page;
 export const selectTotal = (state) => state.campers.total;
-
-
