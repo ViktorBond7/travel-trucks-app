@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { fetchCamperById, fetchCampers } from "./operations.js";
 
 const campersSlice = createSlice({
@@ -54,10 +54,16 @@ export const { toggleFavorite, incrementPage, prepareForNewSearch } =
 
 // =========selectors=========//
 
-export const selectCampers = (state) => state.campers.items;
 export const selectIsLoading = (state) => state.campers.isLoading;
 export const selectIsError = (state) => state.campers.error;
 
 export const selectCamper = (state) => state.campers.camper;
 export const selectPage = (state) => state.campers.page;
 export const selectTotal = (state) => state.campers.total;
+
+const selectCampersState = (state) => state.campers;
+
+export const selectCampers = createSelector(
+  [selectCampersState],
+  (campers) => campers.items,
+);
