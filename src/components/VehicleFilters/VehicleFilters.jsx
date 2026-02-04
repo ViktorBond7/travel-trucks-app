@@ -34,18 +34,16 @@ const EquipmentCheckbox = ({ name, label, iconId }) => (
 
 const VehicleFilters = () => {
   const filterFromStore = useSelector(selectFilters);
+
   const dispatch = useDispatch();
 
   const valueFromStorage = Object.values(
     transformFiltersToParams(filterFromStore),
-  ).slice(0, -1);
+  );
 
   const handleSubmit = (values) => {
-    const cleanParams = transformFiltersToParams(values);
-
     dispatch(setAllFilters(values)); // Зберігаємо оригінальні значення для форми
     dispatch(prepareForNewSearch()); // Очищуємо стейт перед новим пошуком
-    dispatch(fetchCampers({ page: 1, params: cleanParams })); // Відправляємо запит
   };
 
   return (
@@ -93,7 +91,7 @@ const VehicleFilters = () => {
         <div className={css.grid}>
           <VehicleTypeRadio
             name="form"
-            value="van"
+            value="panelTruck"
             label="Van"
             iconId="icon-van"
           />
@@ -122,9 +120,6 @@ const VehicleFilters = () => {
 
                 // 3. Очищуємо список кемперів і сторінку
                 dispatch(prepareForNewSearch());
-
-                // 4. Завантажуємо початковий список без фільтрів
-                // dispatch(fetchCampers({ page: 1, params: {} }));
               }}
             >
               Reset

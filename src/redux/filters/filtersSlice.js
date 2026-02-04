@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   location: "",
-  form: "", // тип кузова: 'van', 'fullyIntegrated', 'alcove'
+  form: "", // тип кузова: 'panelTruck', 'fullyIntegrated', 'alcove'
   ac: false,
   bathroom: false,
   kitchen: false,
   tv: false,
-  transmission: "",
+  transmission: false,
 };
 
 const filtersSlice = createSlice({
@@ -16,15 +16,7 @@ const filtersSlice = createSlice({
   reducers: {
     // Оновлює весь об'єкт фільтрів одним махом
     setAllFilters(state, action) {
-      // Object.assign(state, action.payload);
-      const cleanData = {};
-      Object.keys(action.payload).forEach((key) => {
-        const val = action.payload[key];
-        cleanData[key] =
-          typeof val === "string" ? val.replace(/['"]+/g, "").trim() : val;
-      });
-
-      return { ...state, ...cleanData };
+      Object.assign(state, action.payload);
     },
     resetFilters: () => initialState,
   },
