@@ -19,6 +19,8 @@ import { selectFilters } from "../../redux/filters/filtersSlice";
 
 const CampersPage = () => {
   const campers = useSelector(selectCampers);
+  console.log(campers);
+
   const isLoading = useSelector(selectIsLoading);
   const page = useSelector(selectPage);
   const totalCampers = useSelector(selectTotal);
@@ -52,7 +54,7 @@ const CampersPage = () => {
           {campers ? (
             <CamperList campers={campers} />
           ) : (
-            <p className={css.error}>Something went wrong, please try again</p>
+            <p className={css.error}>Nothing was found for your request</p>
           )}
           {isLoading && <Loader />}
           {!isLoading && campers.length < totalCampers && (
