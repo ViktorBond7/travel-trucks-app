@@ -27,7 +27,7 @@ const CamperCard = ({ camper }) => {
 
       <div className={css.info}>
         <div className={css.header}>
-          <h2 className={css.name}>{name}</h2>
+          <h2 className={css.name}>{camper.name}</h2>
           <div className={css.priceWrapper}>
             <span className={css.price}>${formatPrice(camper.price)}</span>
             <button
