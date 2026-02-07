@@ -1,8 +1,15 @@
 .containerFeatures {
   display: grid;
-  grid-template-columns: 632px 1fr;
+  grid-template-columns: 1fr;
   gap: 40px;
 }
+
+@media screen and (min-width: 1440px) {
+  .containerFeatures {
+    grid-template-columns: 632px 1fr;
+  }
+}
+
 .description {
   background-color: var(--color-secondaryBackground);
   border-radius: 10px;

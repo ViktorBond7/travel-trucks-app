@@ -22,6 +22,7 @@
 }
 .gallery {
   display: flex;
+  flex-wrap: wrap;
   gap: 48px;
 
   margin-bottom: 28px;
