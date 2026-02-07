@@ -1,10 +1,15 @@
 .box {
   margin-top: 50px;
-  max-width: 1006px;
+  width: 100%;
   margin-bottom: 30px;
   /* margin: 0 auto; */
 }
 
+@media screen and (min-width: 768px) {
+  .box {
+    max-width: 1006px;
+  }
+}
 .emptyMessage {
   display: flex;
   flex-direction: column;
