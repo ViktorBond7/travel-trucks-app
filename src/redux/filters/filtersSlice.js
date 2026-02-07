@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   location: "",
   form: "", // тип кузова: 'panelTruck', 'fullyIntegrated', 'alcove'
-  ac: false,
+  AC: false,
   bathroom: false,
   kitchen: false,
-  tv: false,
+  TV: false,
   transmission: false,
 };
 

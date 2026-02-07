@@ -68,7 +68,7 @@ const VehicleFilters = () => {
         <p className={css.title}>Filters</p>
         <h3>Vehicle equipment</h3>
         <div className={css.grid}>
-          <EquipmentCheckbox name="ac" label="AC" iconId="icon-ac" />
+          <EquipmentCheckbox name="AC" label="AC" iconId="icon-ac" />
           <EquipmentCheckbox
             name="transmission"
             label="Automatic"
@@ -79,7 +79,7 @@ const VehicleFilters = () => {
             label="Kitchen"
             iconId="icon-kitchen"
           />
-          <EquipmentCheckbox name="tv" label="TV" iconId="icon-tv" />
+          <EquipmentCheckbox name="TV" label="TV" iconId="icon-tv" />
           <EquipmentCheckbox
             name="bathroom"
             label="Bathroom"

@@ -47,6 +47,8 @@
 .buttonWrapper {
   display: flex;
   gap: 40px;
+  width: 100%;
+  position: relative;
 }
 .btnOutlet {
   background-color: inherit;
@@ -63,7 +65,8 @@
   width: 100%;
   height: 1px;
   background-color: #dadde1;
-  top: 610px;
+  top: 46px;
+  left: 0;
 }
 
 .active {

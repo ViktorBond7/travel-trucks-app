@@ -17,6 +17,13 @@ export const fetchCampers = createAsyncThunk(
 
       return response.data;
     } catch (error) {
+      if (error.response?.status === 404) {
+        return {
+          items: [],
+          total: 0,
+        };
+      }
+
       return thunkAPI.rejectWithValue(error.message);
     }
   },
