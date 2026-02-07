@@ -50,10 +50,9 @@ const CampersPage = () => {
           {isError && (
             <p className={css.error}>Something went wrong, please try again</p>
           )}
-          {campers.length > 0 ? (
-            <CamperList campers={campers} />
-          ) : (
-            <p className={css.error}>Nothing was found for your request</p>
+          {campers.length > 0 && <CamperList campers={campers} />}
+          {!isLoading && !isError && campers.length === 0 && (
+            <p className={css.warning}>Nothing was found for your request</p>
           )}
           {isLoading && <Loader />}
           {!isLoading && campers.length < totalCampers && (
